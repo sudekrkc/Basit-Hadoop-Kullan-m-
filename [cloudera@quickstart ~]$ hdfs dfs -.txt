@@ -1,0 +1,46 @@
+[cloudera@quickstart ~]$ hdfs dfs -mkdir /example
+[cloudera@quickstart ~]$ hdfs dfs -copyFromLocal /home/cloudera/Desktop/ratings.
+csv /example
+[cloudera@quickstart ~]$ hdfs dfs -count /example
+           1            1            2438266 /example
+[cloudera@quickstart ~]$ hdfs dfs -count /var
+          10            0                  0 /var                                 
+[cloudera@quickstart ~]$ hdfs dfs -cp /example/ratings.csv /var
+[cloudera@quickstart ~]$ hdfs dfs - rmr /example
+rmr: DEPRECATED: Please use 'rm -r' instead.
+Deleted /example
+[cloudera@quickstart ~]$ hdfs dfs -mv /var/ratings.csv /user
+[cloudera@quickstart ~]$ hdfs dfs -ls /var
+Found 2 items
+drwxr-xr-x   - hdfs supergroup          0 2017-07-19 05:36 /var/lib
+drwxrwxr-t   - yarn mapred              0 2017-07-19 05:34 /var/log
+[cloudera@quickstart ~]$ hdfs dfs -ls /user
+Found 9 items
+drwxr-xr-x   - cloudera cloudera            0 2017-07-19 05:33 /user/cloudera                                           
+drwxr-xr-x   - mapred   hadoop              0 2017-07-19 05:34 /user/history                                           
+drwxrwxrwx   - hive     supergroup          0 2017-07-19 05:36 /user/hive                   
+drwxrwxrwx   - hue      supergroup          0 2017-07-19 05:35 /user/hue
+drwxrwxrwx   - jenkins  supergroup          0 2017-07-19 05:35 /user/jenkins
+drwxrwxrwx   - oozie    supergroup          0 2017-07-19 05:35 /user/oozie
+-rw-r--r--   1 cloudera supergroup    2438266 2018-03-20 11:18 /user/ratings.csv
+drwxrwxrwx   - root     supergroup          0 2017-07-19 05:35 /user/root
+drwxr-xr-x   - hdfs     supergroup          0 2017-07-19 05:36 /user/spark
+[clouderagquickstart ~]$ hdfs dfs -chmod +x /user/ratings.csv
+[clouderagquickstart ~]$ hdfs dfs -setrep 3 -R /user/ratings.csv
+setrep: `-R': No such file or directory
+Replication 3 set: /user/ratings csv
+[cloudera@quickstart ~]$ hdfs dfs -chmod +x /user/ratings csv
+[cloudera@quickstart ~]$ hdfs dfs -setrep 4 -R /user/ratings.csv
+setrep: `-R': No such file or directory
+Replication 4 set: /user/ratings.csv
+[cloudera@quickstart ~]$
+
+   
+
+  
+
+
+
+ 
+
+                                           
